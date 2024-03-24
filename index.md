@@ -6,7 +6,7 @@
 
 Degree: Data Scientist
 <br>Field of study: Data Science & AI<br>
-<br>Dates: 2023 - ongoing<br>
+Dates: 2023 - ongoing
 
 #### AXELOS – Global Best Pratice
 
