@@ -4,9 +4,9 @@
 
 #### Turing College
 
-<br>Degree: Data Scientist<br>
-Field of study: Data Science & AI
-2023 - ongoing
+Degree: Data Scientist
+<br>Field of study: Data Science & AI<br>
+<br>Dates: 2023 - ongoing<br>
 
 #### AXELOS – Global Best Pratice
 
