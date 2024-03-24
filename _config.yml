@@ -2,6 +2,6 @@
 
 
 title: Fabiano Chapuis
-description: "Text below image"  # You can add your description here
+description:   # You can add your description here
 show_downloads: true
 theme: jekyll-theme-minimal
