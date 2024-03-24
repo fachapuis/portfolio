@@ -3,13 +3,11 @@
 ## Education
 
 #### Turing College
-
 Degree: Data Scientist
 <br>Field of study: Data Science & AI<br>
 Dates: 2023 - ongoing
 
 #### AXELOS – Global Best Pratice
-
 Degree: ITIL Foundation Certificate in IT Service Management Practitioner
 2017
 
