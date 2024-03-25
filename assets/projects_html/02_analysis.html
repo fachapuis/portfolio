@@ -7482,7 +7482,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>The goal of this project is to analyze the courses_data Course dataset. To perform this analysis, we will use concepts from Data Visualization &amp; Data Analysis.</p>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>The goal of this project is to analyze the Coursera Course dataset. To perform this analysis, we will use concepts from Data Visualization &amp; Data Analysis.</p>
 <ul>
 <li><a href="#jupyter-notebook-setup">Jupyter notebook setup</a></li>
 </ul>
@@ -7575,8 +7575,8 @@ a.anchor-link {
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">courses_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../../../assets/data/courses_data.csv"</span><span class="p">)</span>
-<span class="n">courses_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">coursera</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/coursera_data.csv"</span><span class="p">)</span>
+<span class="n">coursera</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7683,7 +7683,7 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check dataframe shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">courses_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coursera</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7722,11 +7722,11 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Rename the "Unnamed: 0" column to "Course Id"</span>
-<span class="n">courses_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'Unnamed: 0'</span><span class="p">:</span> <span class="s1">'course_id'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">coursera</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'Unnamed: 0'</span><span class="p">:</span> <span class="s1">'course_id'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Set the "Course Id" column as the index</span>
-<span class="n">courses_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'course_id'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">courses_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">coursera</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'course_id'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">coursera</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7850,13 +7850,13 @@ a.anchor-link {
 <span class="n">conversion_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'k'</span><span class="p">:</span> <span class="s1">'*1e3'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">:</span> <span class="s1">'*1e6'</span><span class="p">}</span>
 
 <span class="c1"># Replace characters and evaluate expressions</span>
-<span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span>
+<span class="n">coursera</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span>
     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">conversion_dict</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">eval</span><span class="p">)</span>
     <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">courses_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">coursera</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7977,7 +7977,7 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check for duplicate rows (samples)</span>
-<span class="n">duplicate_samples</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[</span><span class="n">courses_data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="n">duplicate_samples</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[</span><span class="n">coursera</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Duplicate Samples:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">duplicate_samples</span><span class="p">)</span>
 </pre></div>
@@ -8027,18 +8027,18 @@ Index: []
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.expand_frame_repr'</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-<span class="n">courses</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[[</span><span class="s1">'course_title'</span><span class="p">,</span>
+<span class="n">courses</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[[</span><span class="s1">'course_title'</span><span class="p">,</span>
                     <span class="s1">'course_organization'</span><span class="p">,</span>
                     <span class="s1">'course_Certificate_type'</span><span class="p">]]</span>
 <span class="n">distinct_course_titles_count</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s1">'course_title'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
-<span class="n">number_of_courses_offered</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_title'</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">number_of_courses_offered</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_title'</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">()</span>
 
 <span class="c1"># Define the columns to consider when looking for duplicates</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'course_title'</span><span class="p">]</span>
 
 <span class="c1"># Find duplicates</span>
-<span class="n">duplicates</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[</span><span class="n">courses_data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span>
+<span class="n">duplicates</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[</span><span class="n">coursera</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span>
                                           <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 
 <span class="c1"># Select and reorder the columns of interest</span>
@@ -8163,7 +8163,7 @@ Number of courses offered: 891
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check for missing values by columns</span>
-<span class="n">missing_values</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Missing Values:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">missing_values</span><span class="p">)</span>
 </pre></div>
@@ -8199,7 +8199,7 @@ dtype: int64
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">column_dtypes</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">column_dtypes</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Data types of each column:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">column_dtypes</span><span class="p">)</span>
 </pre></div>
@@ -8246,7 +8246,7 @@ dtype: object
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">courses_data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">coursera</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8350,7 +8350,7 @@ The median (line inside the rectangle) means that half of the data points fall b
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">coursera</span><span class="p">[</span><span class="s1">'course_students_enrolled'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Course Students Enrolled'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Number of Students Enrolled'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">'Students Enrolled'</span><span class="p">])</span>
@@ -8396,7 +8396,7 @@ The median (line inside the rectangle) means that half of the data points fall b
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top_courses</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'course_students_enrolled'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">top_courses</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'course_students_enrolled'</span><span class="p">)</span>
 
 <span class="c1"># Bar plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -8484,7 +8484,7 @@ The median (line inside the rectangle) means that half of the data points fall b
 <span class="c1"># CJK (Chinese, Japanese, Korean) characters</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
 
-<span class="n">bottom_courses</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'course_students_enrolled'</span><span class="p">)</span>
+<span class="n">bottom_courses</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'course_students_enrolled'</span><span class="p">)</span>
 
 <span class="c1"># Define a color palette for the organizations</span>
 <span class="n">color_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span>
@@ -8572,8 +8572,8 @@ The median (line inside the rectangle) means that half of the data points fall b
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#%pycodestyle_on</span>
-<span class="n">top</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_organization'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pycodestyle_on</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_organization'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">top</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'course_organization'</span><span class="p">:</span> <span class="n">top</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
                        <span class="s1">'course_title'</span><span class="p">:</span> <span class="n">top</span><span class="o">.</span><span class="n">values</span><span class="p">})</span>
 
@@ -8622,9 +8622,9 @@ The median (line inside the rectangle) means that half of the data points fall b
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#%pycodestyle_on</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pycodestyle_on</span>
 <span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">courses_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'course_organization'</span><span class="p">)[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span>
+    <span class="n">coursera</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'course_organization'</span><span class="p">)[</span><span class="s1">'course_students_enrolled'</span><span class="p">]</span>
     <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="p">)</span>
@@ -8668,7 +8668,7 @@ The median (line inside the rectangle) means that half of the data points fall b
 Also based on the Top 10 schools chart, the most popular course is "Machine Learning" with 3.2 million students from Stanford University. But there is just one course from this university. The University of Michingan, however, has 3 courses in the top 10 most popular courses with more than 3.5 million students enrolled on these 3 courses. Johns Hopkins University have each one 2 courses on the top 10.
 By looking at the number of courses offered by Universities / Companies (Top 10), The Univeristy of Pennsylvania has the most courses offered (almost 60), but with only one course on the Top 10 rank, followed by Univerisy of Michigan, with more than 40 courses but only 3 on the Top 10 and and Google Cloud with more than 30 but no courses on the Top 10.
 The number of students enrolled by Universities / Companies (Top 10) shows that the University of Michigan has the most students enrolled, with more than 7 million. The University of Pennsylvania has the second most students enrolled, with roughly 5.5 million, followed by Stanford University with almost 5 million and the most popular course "Machine Learning".</p>
-<h4 id="Bottom-20">Bottom 20<a class="anchor-link" href="#Bottom-20">¶</a></h4><p>The less popular courses have a high rating grade, similar to the most popular ones. The course that has fewer students (1500 enrolled students) is one of the ones with the top rating grade (5.0), including the third less popular course with the same rating grade. The University of California (Irvine) has 2 courses within the 10 less popular courses.</p>
+<h4 id="Bottom-10">Bottom 10<a class="anchor-link" href="#Bottom-10">¶</a></h4><p>The less popular courses have a high rating grade, similar to the most popular ones. The course that has fewer students (1500 enrolled students) is one of the ones with the top rating grade (5.0), including the third less popular course with the same rating grade. The University of California (Irvine) has 2 courses within the 10 less popular courses.</p>
 <h4 id="Ratings">Ratings<a class="anchor-link" href="#Ratings">¶</a></h4><p>Interesting to note that looking at the two scater plots (Top 10 and Bottom 10), it is possible to see that the rating grade is not affected by the number of students enrolled. The two scater plots have similar distribution of ratings, with the majority of courses with a rating grade of 4.5 and 5.0. The scale rating was equilized from 3.0 to 6.0, so the rating distribution can lead to a proper analysis between the two graphs.</p>
 </div>
 </div>
@@ -8692,13 +8692,13 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#%pycodestyle_on</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pycodestyle_on</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># First Plot:</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_rating'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_rating'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Distribution of Course Ratings'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Course Rating'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency'</span><span class="p">)</span>
@@ -8707,7 +8707,7 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 
 <span class="c1"># Second Plot:</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_students_enrolled'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_students_enrolled'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Distribution of Student Course Enrollment'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Course Enrollment'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency'</span><span class="p">)</span>
@@ -8716,7 +8716,7 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <span class="c1"># Second line plots</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">numeric_df</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">"float64"</span><span class="p">,</span> <span class="s2">"int64"</span><span class="p">])</span>
+<span class="n">numeric_df</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">"float64"</span><span class="p">,</span> <span class="s2">"int64"</span><span class="p">])</span>
 <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 
 <span class="c1"># Third Plot: Correlation matrix</span>
@@ -8725,7 +8725,7 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Correlation Matrix"</span><span class="p">)</span>
 
 <span class="c1"># Fourth Plot:</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_students_enrolled'</span><span class="p">,</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_students_enrolled'</span><span class="p">,</span>
                 <span class="n">y</span><span class="o">=</span><span class="s1">'course_rating'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Course Students Enrolled vs. Course Rating'</span><span class="p">)</span>
 
@@ -8767,7 +8767,7 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <p>For <strong>Distribution of Course Ratings</strong> histogram, it is possible to see that the majority of the ratings are between 4.5 and 4.8, with a peak around 4.75. The distribution is approximately normal, with a slight skew to the right. Also we can see the KDE curve, showing the distribution of the ratings.</p>
 <p>For <strong>Distribution of Student Course Enrollment</strong> histogram, it is possible to see the number of enrolled students in courses is distributed. The first bin shows that a large number of courses have a relatively small number of enrolled students, while the second bin shows that fewer courses have a slightly higher number of enrolled students. The distribution is right-skewed and the KDE curve shows the distribution of the enrollments.</p>
 <p>The correlation matrix below shows the relationship between the numerical variables in the dataset.</p>
-<p>For this dataset, I have computed the correlation matrix for the numeric variables in the courses_data dataset. The numeric variables include <code>course_rating</code> and <code>course_students_enrolled</code>.</p>
+<p>For this dataset, I have computed the correlation matrix for the numeric variables in the coursera dataset. The numeric variables include <code>course_rating</code> and <code>course_students_enrolled</code>.</p>
 <p>The correlation coefficient between <code>course_rating</code> and <code>course_students_enrolled</code> is 0.07. This indicates a <em>weak positive correlation</em>, suggesting that there is a <em>weak slight tendency for courses with higher ratings to have more students enrolled</em>. However, the correlation is not strong enough to make a definitive conclusion, but because it's still positive, it suggests a slight tendency for the two variables to increase together. That's why there is a slight tendency for courses with higher ratings to have more students enrolled.</p>
 <p>From the plot, we can observe that the majority of the courses have an enrollment number between 0.0 and 0.5 (in millions), and majority of the ratings are between 4.5 and 4.8, with a peak around 4.75. This suggests that most of the courses on the platform are highly rated and have the majority of students enrolled.</p>
 <p>This could mean that courses with higher ratings tend to have more students enrolled, suggesting that students prefer to enroll in courses with higher ratings. However, as seen before, although there is a very weak positive correlation between <code>course_rating</code> and <code>course_students_enrolled</code> it is hard to confirm that this is a pattern.</p>
@@ -8800,25 +8800,25 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 
 <span class="c1"># First plot: Distribution of Course Difficulty Levels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Course Difficulty Distribution'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Number of Courses'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Difficulty Level'</span><span class="p">)</span>
 
 <span class="c1"># Second plot: Course Ratings by Difficulty Level</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">boxplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">,</span>
+<span class="n">boxplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">,</span>
                       <span class="n">y</span><span class="o">=</span><span class="s1">'course_rating'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Course Ratings by Difficulty Level'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Course Rating'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Difficulty Level'</span><span class="p">)</span>
 
 <span class="c1"># Calculate rating counts for each difficulty level</span>
-<span class="n">rating_counts</span> <span class="o">=</span> <span class="n">courses_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'course_difficulty'</span><span class="p">)[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">rating_counts</span> <span class="o">=</span> <span class="n">coursera</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'course_difficulty'</span><span class="p">)[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 
 <span class="c1"># Add rating counts as text on the boxplot</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rating_counts</span><span class="p">)):</span>
-    <span class="n">boxplot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">boxplot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">,</span>
                  <span class="s1">'n='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rating_counts</span><span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span>
                  <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
 
@@ -8883,24 +8883,24 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'COURSE'</span><span class="p">,</span> <span class="s1">'SPECIALIZATION'</span><span class="p">,</span> <span class="s1">'PROFESSIONAL CERTIFICATE'</span><span class="p">]</span>
 
 <span class="c1"># Bar plot for distribution of certificate types</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_Certificate_type'</span><span class="p">,</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_Certificate_type'</span><span class="p">,</span>
               <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Distribution of Certificate Types'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Certificate Type'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Count'</span><span class="p">)</span>
 
 <span class="c1"># Boxplot for Impact of Certificate Types</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_Certificate_type'</span><span class="p">,</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_Certificate_type'</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="s1">'course_rating'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Impact of Certificate Types on Ratings'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Certificate Type'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Course Rating'</span><span class="p">)</span>
 
-<span class="n">rating_counts</span> <span class="o">=</span> <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_Certificate_type'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">rating_counts</span> <span class="o">=</span> <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_Certificate_type'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
 <span class="c1"># Add rating counts as text on the second boxplot</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rating_counts</span><span class="p">)):</span>
-    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">courses_data</span><span class="p">[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">coursera</span><span class="p">[</span><span class="s1">'course_rating'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">,</span>
                  <span class="s1">'n='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rating_counts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
                  <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
 
@@ -8955,7 +8955,7 @@ The number of students enrolled by Universities / Companies (Top 10) shows that 
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">courses_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">,</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coursera</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'course_difficulty'</span><span class="p">,</span>
                <span class="n">y</span><span class="o">=</span><span class="s1">'course_students_enrolled'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Course Students Enrolled by Difficulty Level'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Course Difficulty'</span><span class="p">)</span>
