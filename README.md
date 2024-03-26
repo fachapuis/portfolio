@@ -38,6 +38,3 @@ For License, check it [here](/portfolio/LICENSE)
 ## Contact
 
 Provide contact information for users to reach out to you with questions or feedback.
-
-
-https://github.com/fachapuis/portfolio/tree/main/ds_projects/Module%201%20-%20Data%20Wrangling%20with%20Python
