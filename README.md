@@ -37,4 +37,4 @@ For License, check it [here](/portfolio/LICENSE)
 
 ## Contact
 
-[email](fabiano.chapuis@gmail.com)
+Contact options on my GitHub page.
