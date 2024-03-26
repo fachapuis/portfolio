@@ -2,11 +2,11 @@
 
 ## Sprint 2: Data Processing with NumPy and Pandas
 
-## Part 5: Sound Tracks analysis
+## Part 5: Soundtrack analysis
 
 ### Overview
 
-The goal of this project, is to analyze the Top 50 Spotify Tracks 2020 dataset. To perform this analysis, some concepts about Data Analysis, Linear Algebra, NumPy, and Pandas will be applied.
+The goal of this project, is to analyze of soundtracks dataset. To perform this analysis, some concepts about Data Analysis, Linear Algebra, NumPy, and Pandas will be applied.
 
 ### Installation
 
