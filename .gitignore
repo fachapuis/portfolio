@@ -5,8 +5,3 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-assets/
-images/
-elements.html
-generic.html
-index.html
