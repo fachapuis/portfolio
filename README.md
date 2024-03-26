@@ -21,7 +21,8 @@ List the key features of your project, highlighting what makes it unique or usef
 
 ## Installation
 
-Provide step-by-step instructions on how to install and set up your project. Include any dependencies or prerequisites.
+Each project will have its own installation instructions through a `requirements.txt` file.
+Installation details are provided on the respective project's README file.
 
 ## Usage
 
@@ -33,7 +34,7 @@ Specify how others can contribute to your project. Include guidelines for submit
 
 ## License
 
-For License, check it [here](/portfolio/LICENSE)
+For License, check it [here](LICENSE)
 
 ## Contact
 
